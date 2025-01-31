@@ -28,11 +28,13 @@ editTitle(title) {
 
 }
 
+
 const Workout = new Task("Evening Run", "doing HIIT", "1/30/2025", "high", "Need to get faster & build stamina", false);
 console.log(Workout);
 
 const eWorkout = new Edit(Workout);
-eWorkout.editTitle("Morning Run");
+eWorkout.editTitle("Morning Run"); // The edited version will replace the root version in the DOM
+eWorkout.editTitle("Afternoon Run"); // The edit version can be edited as many times as necessary.
 console.log(eWorkout);
 
 
