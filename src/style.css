@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+--blue: #4d6bfe;
+--darkBlue: #292a2d;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: trap;
+    src: url(fonts/Trap-Bold.otf);
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    padding: 20px;
+    background-color: var(--darkBlue);
+    height: 695px;
+    width: 280px;
+    font-family: Poppins;
+}
+
+h1 {
+    font-family: trap;
+    color: white;
+}
+
+#newProject {
+/* CSS */
+
+  appearance: button;
+  background-color: var(--blue);
+  background-image: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 5px 10px 0;
+  overflow: visible;
+  padding: 12px 30px;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+#newProject:hover {
+    box-shadow: 0;
+    opacity: 0.8;;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.project {
+padding: 5px 10px;
+border: 0;
+border-radius: 5px;
+color: white;
+}
+
+.project:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}

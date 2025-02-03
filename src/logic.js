@@ -1,6 +1,6 @@
 export class Task {
 
-    constructor(title, desc, date, priority, notes, done) {
+    constructor(title, desc, date, priority, notes, done, project) {
     
     this.title = title;
     this.description = desc;
@@ -8,6 +8,7 @@ export class Task {
     this.priority = priority;
     this.notes = notes;
     this.done = done;
+    this.project = project;
     
     }
     
@@ -51,7 +52,7 @@ export class Project {
     }
 
 }
-    
+
     
 
 export const Workout = new Task("Evening Run", "doing HIIT", "1/30/2025", "high", "Need to get faster & build stamina", false);
