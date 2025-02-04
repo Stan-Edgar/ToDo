@@ -9,6 +9,12 @@
 --darkBlue: #292a2d;
 }
 
+body {
+    display: flex;
+    width: 1536px;
+    font-family: Poppins;
+}
+
 @font-face {
     font-family: Poppins;
     src: url(fonts/Poppins-Regular.ttf);
@@ -25,7 +31,7 @@
     row-gap: 30px;
     padding: 20px;
     background-color: var(--darkBlue);
-    height: 695px;
+    height: 729px;
     width: 280px;
     font-family: Poppins;
 }
@@ -68,21 +74,118 @@ h1 {
     opacity: 0.8;;
 }
 
-.projects {
+#projects {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
 }
 
-.project {
+#project {
 padding: 5px 10px;
 border: 0;
 border-radius: 5px;
 color: white;
 }
 
-.project:hover {
+#project:hover {
     background-color: white;
     color: black;
+    cursor: pointer;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    padding: 20px;
+    row-gap: 90px;
+}
+
+#page {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+}
+
+#pageInfo {
+    font-family: trap;
+    font-size: 1.3rem;
+}
+
+#select {
+    font-family: Poppins;
+    font-size: 1rem;
+}
+
+#newTask {
+    display: flex;
+    background-color: var(--blue);
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    box-shadow: inset 1px 1px 10px #004785; 
+    cursor: pointer;
+}
+
+#newTask:hover {
+    background-color: white;
+    color: black;
+    box-shadow: inset 1px 1px 10px #000000; 
+}
+
+#tasks {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 60%;
+    justify-content: center;
+}
+
+#task {
+    display: grid;
+    grid-template-columns: 1fr 200px ;
+    background-color: var(--darkBlue);
+    color: white;
+    padding: 20px;
+    border: 0;
+    border-radius: 10px;
+}
+
+#priority {
+width: 50px;
+background-color: red;
+}
+
+#utilities {
+    display: grid;
+    grid-template-columns: 100px repeat(2, 1fr);
+    height: 100%;
+    column-gap: 20px;
+    align-items: center;
+}
+
+#done {
+    display: flex;
+    font-family: trap;
+    padding: 10px;
+    width: 100px;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+#done:hover {
+    color: white;
+    background-color: black;
+}
+
+svg {
+    width: 1.3rem;
+    fill: white;
     cursor: pointer;
 }

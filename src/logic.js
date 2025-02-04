@@ -53,8 +53,9 @@ export class Project {
 
 }
 
-    
 
+    
+/*
 export const Workout = new Task("Evening Run", "doing HIIT", "1/30/2025", "high", "Need to get faster & build stamina", false);
 
 export const Meditation = new Task("Morning Meditation", "NSDR", "1/31/2025", "medium", "", false);
@@ -65,6 +66,6 @@ eWorkout.editTitle("Afternoon Run"); // The edit version can be edited as many t
 
 export const Default = new Project("Default", Workout, eWorkout, Meditation);
 
-    
+*/
     
     
