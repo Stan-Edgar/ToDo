@@ -53,6 +53,21 @@ export class Project {
 
 }
 
+export function checkPriority(priority, DOMPriority) {
+
+    console.log("Checking Priority......")
+
+    if (priority === "low") {
+        DOMPriority.innerHTML = "&#9733;";
+    } else if (priority === "medium") {
+        DOMPriority.innerHTML = "&#9733;&#9733;";
+    } else if (priority === "high") {
+        DOMPriority.innerHTML = "&#9733;&#9733;&#9733;";
+    } else {console.error("Invalid Priority....")}
+
+} 
+
+
 
     
 /*
