@@ -16,6 +16,21 @@ const currentDate = format(new Date(), "MM/dd/yyyy");
 newTask.addEventListener('click', function() {
 
 
+    //Prompts 
+
+    let pTitle = prompt("Title: ");
+    let pDesc = prompt("Description: ");
+    let pDate = prompt("Date: ");
+    let pPriority = prompt("Priority: ");
+    let pNotes = prompt("Notes: ");
+    let pDone = false;
+    let pProject = "default";
+
+    // Creating the task
+
+    const taskInfo = new Task(pTitle, pDesc, currentDate, pPriority, pNotes, pProject);
+    console.log(taskInfo);
+
     // Basic Task Element Structure
     const task = document.createElement('div');
 
@@ -45,9 +60,9 @@ newTask.addEventListener('click', function() {
 
 
     // Testing 
-    Title.innerHTML = "Meditation";
+    Title.innerHTML = pTitle;
     date.innerHTML = `${currentDate}`;
-    checkPriority("high", Priority);
+    checkPriority(pPriority, Priority);
 
     // Adding Necessary Buttons
     Done.innerHTML = "Done";
