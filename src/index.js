@@ -1,5 +1,5 @@
 import { compareAsc, format } from "date-fns";
-import {Task, Edit, Project, checkPriority} from "./logic.js";
+import {Task, Edit, Project, checkPriority, displayProject} from "./logic.js";
 import "./style.css";
 
 // new Date(year, monthIndex, day
@@ -10,25 +10,39 @@ import "./style.css";
 
 const newTask = document.querySelector("#newTask");
 const tasks = document.querySelector("#tasks");
+const select = document.querySelector("#select")
 const currentDate = format(new Date(), "MM/dd/yyyy");
 
+const projects = document.querySelector("#projects");
+const newProject = document.querySelector("#newProject");
 
+let taskArr = [];
+
+// Task Event
 newTask.addEventListener('click', function() {
 
-
     //Prompts 
-
     let pTitle = prompt("Title: ");
     let pDesc = prompt("Description: ");
     let pDate = prompt("Date: ");
     let pPriority = prompt("Priority: ");
     let pNotes = prompt("Notes: ");
     let pDone = false;
-    let pProject = "default";
+    let pProject = prompt("Project Name: ");
+
+    if (pDate === "" || pDate === null || pDate === undefined) {
+        pDate = currentDate;
+    } 
+    if (pTitle === "" || pTitle === null || pTitle === undefined) {
+        pTitle = "task";
+    }
+    if (pProject === "" || pProject === null || pProject === undefined) {
+        pProject = "default";
+    }
+
 
     // Creating the task
-
-    const taskInfo = new Task(pTitle, pDesc, currentDate, pPriority, pNotes, pProject);
+    const taskInfo = new Task(pTitle, pDesc, pDate, pPriority, pNotes, pDone,  pProject);
     console.log(taskInfo);
 
     // Basic Task Element Structure
@@ -52,6 +66,7 @@ newTask.addEventListener('click', function() {
 
     info.id = "info";
     Priority.id = "priority";
+    task.className = pProject;
 
     Utilities.id = "utilities"
     Done.id = "done";
@@ -61,7 +76,7 @@ newTask.addEventListener('click', function() {
 
     // Testing 
     Title.innerHTML = pTitle;
-    date.innerHTML = `${currentDate}`;
+    date.innerHTML = `${pDate}`;
     checkPriority(pPriority, Priority);
 
     // Adding Necessary Buttons
@@ -84,9 +99,11 @@ newTask.addEventListener('click', function() {
 
     tasks.appendChild(task);
 
-
+    taskArr.push(taskInfo);
     //Finishing Task
     Done.addEventListener('click', () => {
+
+        taskInfo.done = true;
         
         Done.style.backgroundColor = "black";
         Done.style.color = "white";
@@ -94,12 +111,43 @@ newTask.addEventListener('click', function() {
         task.style.backgroundColor = "white";
         task.style.color = "black";
         task.style.border = "1px solid black";
-        
+
         const destroy = () => {task.remove();};
-        
-        setTimeout(destroy, 1000)})
+        setTimeout(destroy, 500);})
+
+    // Deleting Task
+    Trash.addEventListener('click', () => {task.remove();})
 
 })
+
+
+//Project Event
+newProject.addEventListener('click', function(){
+
+// Creating Project
+const project = document.createElement('div');
+project.id = "project"
+
+let projectName = prompt("Project Name: ");
+project.innerHTML = `+ ${projectName}`;
+
+const projectInfo = new Project(projectName);
+console.log(projectInfo);
+
+// Adding to the DOM
+projects.appendChild(project);
+
+project.addEventListener('click', function() {
+    select.innerHTML = projectName;
+
+    displayProject(taskArr, projectName);
+
+})
+
+
+})
+
+
 
 
 
