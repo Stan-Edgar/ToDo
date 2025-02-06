@@ -71,7 +71,6 @@ export function checkPriority(priority, DOMPriority) {
 // The idea is to get all the tasks with a project name and put hidden on the ones that don't
 export function displayProject(arr, proName) {
 
-const taskp = document.querySelector(`#${proName}`);
 const allTask = document.querySelectorAll("#task");
 
 
@@ -79,17 +78,6 @@ const allTask = document.querySelectorAll("#task");
 // It works at hiding all the irrelevant projects but not bring it back
 
 
-for (let i = 0; i < arr.length; i++) {
-
-    let index = arr[i];
-    console.log(index);
-
-    if (index.project === proName) {
-
-        console.log(`${index.title} stays!`)
-        index.className = proName;
-
-    } 
 
     allTask.forEach(task => {
         if (task.className !== proName ) {
@@ -99,9 +87,6 @@ for (let i = 0; i < arr.length; i++) {
         }
     });
     
-
-}
-
 
 }
 
