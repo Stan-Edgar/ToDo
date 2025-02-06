@@ -21,6 +21,8 @@ let taskArr = [];
 // Task Event
 newTask.addEventListener('click', function() {
 
+    if (taskArr.length > 7){return};
+
     //Prompts 
     let pTitle = prompt("Title: ");
     let pDesc = prompt("Description: ");

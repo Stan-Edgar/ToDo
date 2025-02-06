@@ -74,7 +74,10 @@ export function displayProject(arr, proName) {
 const taskp = document.querySelector(`#${proName}`);
 const allTask = document.querySelectorAll("#task");
 
-let dsplay = [];
+
+// my problem is that I'm not checking the index.project when putting display.
+// It works at hiding all the irrelevant projects but not bring it back
+
 
 for (let i = 0; i < arr.length; i++) {
 
@@ -82,14 +85,20 @@ for (let i = 0; i < arr.length; i++) {
     console.log(index);
 
     if (index.project === proName) {
-        dsplay.push(arr[i]);
-    } else {
-        allTask.forEach(task => {
-            if (task.className !== proName ) {
-                task.style.display = "none";
-            }
-        });
-    }
+
+        console.log(`${index.title} stays!`)
+        index.className = proName;
+
+    } 
+
+    allTask.forEach(task => {
+        if (task.className !== proName ) {
+            task.style.display = "none";
+        } else {
+            task.style.display = "grid";
+        }
+    });
+    
 
 }
 
