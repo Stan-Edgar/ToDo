@@ -1,3 +1,4 @@
+
 export class Task {
 
     constructor(title, desc, date, priority, notes, done, project) {
@@ -16,7 +17,7 @@ export class Task {
     }
     
     
-export class Edit {
+export class editTask {
 
 constructor(task) {
     this.task = task;
@@ -37,12 +38,17 @@ editDate(date) {
 editPriority(priority) {
     this.task.priority = priority;
 }
+
 editNotes(notes) {
     this.task.notes = notes;
 }
+
+editProject(project) {
+    this.task.project = project;
+}
+
     
-    
-    }
+}
     
 export class Project {
 
@@ -73,12 +79,6 @@ export function displayProject(arr, proName) {
 
 const allTask = document.querySelectorAll("#task");
 
-
-// my problem is that I'm not checking the index.project when putting display.
-// It works at hiding all the irrelevant projects but not bring it back
-
-
-
     allTask.forEach(task => {
         if (task.className !== proName ) {
             task.style.display = "none";
@@ -89,6 +89,27 @@ const allTask = document.querySelectorAll("#task");
     
 
 }
+
+export function promptDefaults(pDate, pTitle, pProject, pPriority, today) {
+
+    if (pDate === "" || pDate === null || pDate === undefined) {
+        pDate = today;
+      
+    } 
+    if (pTitle === "" || pTitle === null || pTitle === undefined) {
+        pTitle = "task";
+       
+    }
+    if (pProject === "" || pProject === null || pProject === undefined) 
+        pProject = "default";
+   
+    
+    if (pPriority === "" || pPriority === null || pPriority === undefined) {
+        pPriority = "low";
+       
+    }
+
+};
 
     
 /*

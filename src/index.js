@@ -1,5 +1,5 @@
 import { compareAsc, format } from "date-fns";
-import {Task, Edit, Project, checkPriority, displayProject} from "./logic.js";
+import {Task, editTask, Project, checkPriority, displayProject, promptDefaults} from "./logic.js";
 import "./style.css";
 
 // new Date(year, monthIndex, day
@@ -32,15 +32,7 @@ newTask.addEventListener('click', function() {
     let pDone = false;
     let pProject = prompt("Project Name: ");
 
-    if (pDate === "" || pDate === null || pDate === undefined) {
-        pDate = currentDate;
-    } 
-    if (pTitle === "" || pTitle === null || pTitle === undefined) {
-        pTitle = "task";
-    }
-    if (pProject === "" || pProject === null || pProject === undefined) {
-        pProject = "default";
-    }
+    promptDefaults(pDate, pTitle, pProject, currentDate);
 
 
     // Creating the task
@@ -119,6 +111,32 @@ newTask.addEventListener('click', function() {
 
     // Deleting Task
     Trash.addEventListener('click', () => {task.remove();})
+
+    // Editing Task
+    Edit.addEventListener('click', function() {
+
+        const editing = new editTask(taskInfo);
+        
+        let pTitle = prompt("Title: ");
+        let pPriority = prompt("Priority: ");
+        let pDate = prompt("Date: ");
+        let pProject = prompt("Project Name: ");
+
+        editing.editDate(pDate);
+        editing.editTitle(pTitle);
+        editing.editProject(pProject);
+        editing.editPriority(pPriority);
+
+
+        promptDefaults(pDate, pTitle, pProject, pPriority, currentDate);
+
+        date.innerHTML = `${pDate}`;
+        Title.innerHTML = pTitle;
+        task.className = pProject;
+
+        checkPriority(pPriority, Priority);
+
+    })
 
 })
 
