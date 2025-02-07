@@ -37,7 +37,11 @@ newTask.addEventListener('click', function() {
 
     // Creating the task
     const taskInfo = new Task(pTitle, pDesc, pDate, pPriority, pNotes, pDone,  pProject);
+
+    localStorage.setItem('taskInfo', JSON.stringify(taskInfo));
     console.log(taskInfo);
+    console.log( JSON.parse(localStorage.getItem('taskInfo')));
+
 
     // Basic Task Element Structure
     const task = document.createElement('div');
@@ -152,7 +156,9 @@ let projectName = prompt("Project Name: ");
 project.innerHTML = `+ ${projectName}`;
 
 const projectInfo = new Project(projectName);
+localStorage.setItem('projectInfo', JSON.stringify(projectInfo));
 console.log(projectInfo);
+console.log(JSON.parse(localStorage.getItem('projectInfo')));
 
 // Adding to the DOM
 projects.appendChild(project);
