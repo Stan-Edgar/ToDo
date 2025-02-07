@@ -1,5 +1,5 @@
 import { compareAsc, format } from "date-fns";
-import {Task, editTask, Project, checkPriority, displayProject, promptDefaults} from "./logic.js";
+import {Task, editTask, Project, checkPriority, displayProject, promptDefaults, getMemory} from "./logic.js";
 import "./style.css";
 
 // new Date(year, monthIndex, day
@@ -17,6 +17,16 @@ const projects = document.querySelector("#projects");
 const newProject = document.querySelector("#newProject");
 
 let taskArr = [];
+let projectArr = [];
+
+
+if (taskArr.length === 0 && projectArr.length === 0) {
+    getMemory(taskArr, projectArr);
+    console.log("Loaded localStorage Elements")
+}
+//Writing
+
+
 
 // Task Event
 newTask.addEventListener('click', function() {
@@ -38,9 +48,8 @@ newTask.addEventListener('click', function() {
     // Creating the task
     const taskInfo = new Task(pTitle, pDesc, pDate, pPriority, pNotes, pDone,  pProject);
 
-    localStorage.setItem('taskInfo', JSON.stringify(taskInfo));
+   
     console.log(taskInfo);
-    console.log( JSON.parse(localStorage.getItem('taskInfo')));
 
 
     // Basic Task Element Structure
@@ -98,6 +107,9 @@ newTask.addEventListener('click', function() {
     tasks.appendChild(task);
 
     taskArr.push(taskInfo);
+    getMemory(projectArr, taskArr);
+
+
     //Finishing Task
     Done.addEventListener('click', () => {
 
@@ -148,6 +160,8 @@ newTask.addEventListener('click', function() {
 //Project Event
 newProject.addEventListener('click', function(){
 
+    if (projectArr.length > 4){return};
+
 // Creating Project
 const project = document.createElement('div');
 project.id = "project"
@@ -156,16 +170,14 @@ let projectName = prompt("Project Name: ");
 project.innerHTML = `+ ${projectName}`;
 
 const projectInfo = new Project(projectName);
-localStorage.setItem('projectInfo', JSON.stringify(projectInfo));
-console.log(projectInfo);
-console.log(JSON.parse(localStorage.getItem('projectInfo')));
+projectArr.push(projectInfo);
+getMemory(projectArr, taskArr);
 
 // Adding to the DOM
 projects.appendChild(project);
 
 project.addEventListener('click', function() {
     select.innerHTML = projectName;
-
     displayProject(taskArr, projectName);
 
 })
